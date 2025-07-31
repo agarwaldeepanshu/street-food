@@ -1,0 +1,19 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('search-bar');
+    const searchableItems = document.querySelectorAll('[data-searchable]');
+
+    if (searchBar) {
+        searchBar.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            searchableItems.forEach(item => {
+                const textContent = item.textContent.toLowerCase();
+                if (textContent.includes(query)) {
+                    item.classList.remove('is-hidden');
+                } else {
+                    item.classList.add('is-hidden');
+                }
+            });
+        });
+    }
+});
